@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <span *ngIf="data.id; else add_class">Edit credit</span>
+      <ng-template #add_class>Add new credit</ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>Enter data of a credit for {{ data.subject }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content [formGroup]="dialogForm" fxLayout="column">
+    <mat-form-field>
+      <mat-label>Credit Type</mat-label>
+      <mat-select formControlName="creditType">
+        <mat-option *ngFor="let creditType of typeOption"
+                    [value]="creditType">{{ creditType }}</mat-option>
+      </mat-select>
+      <mat-error>
+        Credit type is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Credit code</mat-label>
+      <input matInput formControlName="creditCode" type="number" required>
+      <mat-error>
+        Credit code is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="required"
+                  labelPosition="before"
+                  color="primary">
+      Required
+    </mat-checkbox>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" type="string">
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+    <button mat-button color="primary" [disabled]="dialogForm.invalid" (click)="onSubmit()">OK</button>
+  </mat-card-actions>
+</mat-card>

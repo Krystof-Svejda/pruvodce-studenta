@@ -1,0 +1,32 @@
+<div fxLayout fxLayoutAlign="end">
+  <button class="add-button" mat-raised-button (click)="onAdd()"><mat-icon color="accent">add</mat-icon> School Subject</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="subject">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Subject</th>
+    <td mat-cell *matCellDef="let row">{{ row.subject }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="optional">
+    <th mat-header-cell *matHeaderCellDef>Optional</th>
+    <td mat-cell *matCellDef="let row">
+      <mat-icon *ngIf="row.optional">check</mat-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th class="td-action" mat-header-cell *matHeaderCellDef>Actions</th>
+    <td class="td-action" mat-cell *matCellDef="let row">
+      <button mat-icon-button (click)="onEdit(row.id)" aria-label="Edit">
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onDelete(row.id)" aria-label="Delete">
+        <mat-icon color="accent">cancel</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

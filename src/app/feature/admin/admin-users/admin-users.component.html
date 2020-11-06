@@ -1,0 +1,47 @@
+
+<div class="prdel">
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+    <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
+    <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Last name</th>
+    <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+    <td mat-cell *matCellDef="let row">
+      <mat-chip-list>
+        <mat-chip *ngIf="row.roles.student">student</mat-chip>
+        <mat-chip *ngIf="row.roles.teacher" color="primary" selected>teacher</mat-chip>
+        <mat-chip *ngIf="row.roles.admin" color="accent" selected>admin</mat-chip>
+      </mat-chip-list>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="className">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Class</th>
+    <td mat-cell *matCellDef="let row">{{ row.className }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th class="td-action" mat-header-cell *matHeaderCellDef>Actions</th>
+    <td class="td-action" mat-cell *matCellDef="let row">
+      <button mat-icon-button (click)="onEdit(row.id)" aria-label="Edit">
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>

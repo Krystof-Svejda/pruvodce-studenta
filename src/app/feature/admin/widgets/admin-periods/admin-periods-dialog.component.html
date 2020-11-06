@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <span *ngIf="data.id; else add_class">Edit quarter</span>
+      <ng-template #add_class>Add new quarter</ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>Enter data of a quarter</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content [formGroup]="dialogForm" fxLayout="column">
+    <mat-form-field>
+      <mat-label>Subject</mat-label>
+      <mat-select formControlName="subject" required>
+        <mat-option *ngFor="let subject of subjectsList" [value]="subject">
+          {{ subject }}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        Subject is required.
+      </mat-error>
+    </mat-form-field>
+
+    <div fxLayout="row">
+      <mat-form-field>
+        <mat-label>Period1 Date</mat-label>
+        <input matInput
+               formControlName="dateP1"
+               [matDatepicker]="dateP1picker">
+        <mat-datepicker-toggle matSuffix [for]="dateP1picker"></mat-datepicker-toggle>
+        <mat-datepicker #dateP1picker></mat-datepicker>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <mat-label>Period1 Credits</mat-label>
+        <input matInput formControlName="creditsP1" type="number">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field>
+        <mat-label>Period2 Date</mat-label>
+        <input matInput
+               formControlName="dateP2"
+               [matDatepicker]="dateP2picker">
+        <mat-datepicker-toggle matSuffix [for]="dateP2picker"></mat-datepicker-toggle>
+        <mat-datepicker #dateP2picker></mat-datepicker>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <mat-label>Period2 Credits</mat-label>
+        <input matInput formControlName="creditsP2" type="number">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field>
+        <mat-label>Period3 Date</mat-label>
+        <input matInput
+               formControlName="dateP3"
+               [matDatepicker]="dateP3picker">
+        <mat-datepicker-toggle matSuffix [for]="dateP3picker"></mat-datepicker-toggle>
+        <mat-datepicker #dateP3picker></mat-datepicker>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <mat-label>Period3 Credits</mat-label>
+        <input matInput
+               formControlName="creditsP3"
+               type="number">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field>
+        <mat-label>Period4 Date</mat-label>
+        <input matInput
+               formControlName="dateP4"
+               [matDatepicker]="dateP4picker">
+        <mat-datepicker-toggle matSuffix [for]="dateP4picker"></mat-datepicker-toggle>
+        <mat-datepicker #dateP4picker></mat-datepicker>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <mat-label>Period4 Credits</mat-label>
+        <input matInput formControlName="creditsP4" type="number">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+    <button mat-button color="primary" [disabled]="dialogForm.invalid" (click)="onSubmit()">OK</button>
+  </mat-card-actions>
+</mat-card>

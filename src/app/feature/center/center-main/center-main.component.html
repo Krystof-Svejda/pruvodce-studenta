@@ -1,0 +1,39 @@
+<div class="prdel">
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center" fxLayoutAlign="space-between start">
+    <mat-accordion fxFlex>
+      <mat-expansion-panel *ngFor="let creditOverview of creditsOverview">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <a class="subject-reference" style="text-decoration:none"
+               href="center/detail/{{creditOverview.subject}}">{{ creditOverview.subject }}</a>
+          </mat-panel-title>
+          <mat-panel-description>
+            <div
+              [ngStyle]='creditOverview.studentCreditsAsOfNow >= creditOverview.requiredCreditsAsOfNow ? {color: "green"} : {color: "red"}'>
+              Splněno: {{ creditOverview.studentCreditsAsOfNow }} (máš mít {{ creditOverview.requiredCreditsAsOfNow }})
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <table mat-table [dataSource]="creditOverview.detailDates">
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Splnit</th>
+            <td mat-cell *matCellDef="let credit">
+              Do {{ credit.date.getDate() }}.{{ credit.date.getMonth() + 1 }}.{{ credit.date.getFullYear() }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="credits">
+            <th mat-header-cell *matHeaderCellDef>Počet podmínek</th>
+            <td mat-cell *matCellDef="let credit">{{ credit.credits }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <span>&nbsp; &nbsp; &nbsp;</span>
+    <app-calendar></app-calendar>
+  </div>
+</div>
+<!--<button mat-raised-button (click)="onSubmit()">INITIALIZE DB</button> -->

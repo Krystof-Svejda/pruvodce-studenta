@@ -1,0 +1,41 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "student-credits",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "subject",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "creditType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "creditCode",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "subject-credits",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "subject",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "creditType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "creditCode",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

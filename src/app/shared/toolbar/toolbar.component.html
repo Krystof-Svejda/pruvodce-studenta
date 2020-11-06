@@ -1,0 +1,32 @@
+<mat-toolbar class="toolbar" fxLayout="row">
+  <button mat-button class="velikost" (click)="toggleSidebar()" *ngIf="currentUser">
+  <!--button triggers sidebar
+    <mat-icon >menu</mat-icon>-->
+
+    <img class="asdf" src="https://i.ibb.co/P5CC2Z1/icon-3.png" alt="icon-3" border="0">
+
+  </button>
+  &nbsp;&nbsp;&nbsp;
+  <a class="nav-bar-name" [routerLink]="['/']" [fxHide]="isHandset"> PODMÍNKY <!--{{ title }} -->  &nbsp; &nbsp; {{ currentSchoolYear }} </a>
+
+  <span fxFlex="1 0 auto"></span>
+
+<!--button triggers person menu-->
+  <div class="velikost">
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="currentUser !== null">
+      <mat-icon>person</mat-icon>
+
+      <span [fxHide]="isHandset">
+        {{ currentUser.firstName }}
+        {{ currentUser.lastName }}
+      </span>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+  <button mat-menu-item  [routerLink]="['admin/profile']"><mat-icon>person</mat-icon> profil </button>
+
+
+  <button mat-menu-item (click)="logout()"><mat-icon>input</mat-icon> odhlásit </button>
+</mat-menu>

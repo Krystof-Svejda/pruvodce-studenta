@@ -1,0 +1,31 @@
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <span *ngIf="data.id; else add_class">Edit class</span>
+      <ng-template #add_class>Add new class</ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>Enter data of a school class</mat-card-subtitle>
+  </mat-card-header>
+<mat-card-content [formGroup]="dialogForm" fxLayout="column">
+  <mat-form-field>
+    <mat-label>Class Name</mat-label>
+    <input matInput formControlName="className" type="string" required>
+    <mat-error>
+      Class name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Year</mat-label>
+    <input matInput formControlName="freshmanYear" type="number" required>
+    <mat-error>
+      Year is required, must be within {{ thisYear - 8 }} - {{ thisYear + 1 }}.
+    </mat-error>
+  </mat-form-field>
+</mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+    <button mat-button color="primary" [disabled]="dialogForm.invalid" (click)="onSubmit()">OK</button>
+  </mat-card-actions>
+</mat-card>

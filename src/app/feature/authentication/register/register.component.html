@@ -1,0 +1,107 @@
+<div fxLayout="column" fxLayoutAlign="center stretch" fxFill>
+  <mat-card>
+    <mat-card-title fxLayoutAlign="center">Register</mat-card-title>
+    <mat-card-subtitle fxLayoutAlign="center">Create your credentials</mat-card-subtitle>
+
+    <form [formGroup]="registerForm">
+      <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field class="main-widgets" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input id="emailInput"
+                 matInput
+                 formControlName="email"
+                 autocomplete="email"
+                 type="email"
+                 required>
+          <mat-error id="invalidEmailError" *ngIf="registerForm.controls['email'].hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error id="requiredEmailError" *ngIf="registerForm.controls['email'].hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="main-widgets" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input id="firstNameInput"
+                 matInput
+                 formControlName="firstName"
+                 required>
+          <mat-error id="requiredFirstNameError" *ngIf="registerForm.controls['firstName'].hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="main-widgets" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input id="lastNameInput"
+                 matInput
+                 formControlName="lastName"
+                 required>
+          <mat-error id="requiredLastNameError" *ngIf="registerForm.controls['lastName'].hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div *ngIf="!isHandset; else isSmallDevice"  class="main-widgets" fxLayout="row" fxLayoutAlign="space-between end">
+          <mat-form-field appearance="fill" fxFlex="70">
+            <mat-label>Password</mat-label>
+            <input id="passwordInput"
+                   matInput
+                   formControlName="password"
+                   type="password"
+                   autocomplete="current-password"
+                   required>
+            <mat-error id="requiredPasswordError" *ngIf="registerForm.controls['email'].hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <div fxFlex="5px"></div>
+          <mat-form-field class="class-selector" fxLayoutAlign="end" fxFlex>
+            <mat-label>Class</mat-label>
+            <mat-select formControlName="className" required>
+              <mat-option *ngFor="let className of schoolClasses"
+                          [value]="className">{{ className }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <ng-template #isSmallDevice>
+            <mat-form-field appearance="fill" class="main-widgets">
+              <mat-label>Password</mat-label>
+              <input id="passwordInput"
+                     matInput
+                     formControlName="password"
+                     type="password"
+                     autocomplete="current-password"
+                     required>
+              <mat-error id="requiredPasswordError" *ngIf="registerForm.controls['email'].hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="class-selector" fxLayoutAlign="end" >
+              <mat-label>Class</mat-label>
+              <mat-select formControlName="className" required>
+                <mat-option *ngFor="let className of schoolClasses"
+                            [value]="className">{{ className }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </ng-template>
+
+      </mat-card-content>
+
+      <mat-card-actions class="login-actions" fxLayoutAlign="end">
+        <button type="button" mat-raised-button id="login" color="primary" [disabled]="registerForm.invalid"
+                (click)="register()">REGISTER
+        </button>
+      </mat-card-actions>
+
+      <mat-divider></mat-divider>
+      <br>
+
+      <div fxLayout="column" class="mat-small" fxLayoutAlign="start start">
+        <span class="login-alternative">Already have an account? <a [routerLink]="['/auth/login']">Login</a></span>
+      </div>
+    </form>
+  </mat-card>
+</div>

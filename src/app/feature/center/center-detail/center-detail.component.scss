@@ -1,0 +1,80 @@
+.mat-card{
+  margin: 2%;
+}
+.mat-table {
+  width: 100%;
+}
+.credit-required {
+  color: red;
+}
+
+.credit-required {
+  color: red;
+}
+
+tr.credit-detail-row {
+  height: 0;
+}
+
+tr.credit-row:not(.credit-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.credit-row:not(.credit-expanded-row):active {
+  background: #efefef;
+}
+
+.credit-row td {
+  border-bottom-width: 0;
+}
+
+.credit-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.credit-diagram {
+  min-width: 120px;
+  border: 3px solid rebeccapurple;
+  border-radius: 7px;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+.vykricnik{
+  color: red;
+}
+
+.credit-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+.credit-description {
+  padding-left: 25px;
+}
+
+.credit-description-attribution {
+  opacity: 0.5;
+}
+
+.textarea {
+  border: 1px solid gray;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+  margin-bottom: 10px;
+}
+.textarea {
+  display: block;
+  width: 29.5%;
+  overflow: hidden;
+  resize: both;
+  min-height: 70px;
+  line-height: 20px;
+}
+.textarea[contenteditable]:empty::before {
+  content: "Comments";
+  color: gray;
+}

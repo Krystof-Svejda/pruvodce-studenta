@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <span *ngIf="data.id; else add_class">Edit subject</span>
+      <ng-template #add_class>Add new subject</ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>Enter data of a school subject</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content [formGroup]="dialogForm" fxLayout="column">
+    <mat-form-field>
+      <mat-label>Subject</mat-label>
+      <input matInput formControlName="subject" type="string" required>
+      <mat-error>
+        Subject name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="optional"
+                  labelPosition="before"
+                  color="primary">
+      Optional
+    </mat-checkbox>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+    <button mat-button color="primary" [disabled]="dialogForm.invalid" (click)="onSubmit()">OK</button>
+  </mat-card-actions>
+</mat-card>

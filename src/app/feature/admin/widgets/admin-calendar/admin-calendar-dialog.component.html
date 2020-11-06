@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title fxLayoutAlign="center">
+      <span *ngIf="data.id; else add_event">Edit event</span>
+      <ng-template #add_event>Add new event</ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>Enter data of a new event</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content [formGroup]="dialogForm" fxLayout="column">
+    <mat-form-field>
+      <mat-label>event date</mat-label>
+      <input [matDatepicker]="datepicker"
+             formControlName="date"
+             required
+             matInput>
+      <mat-datepicker-toggle [for]="datepicker" matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>event</mat-label>
+      <input formControlName="event" matInput required type="string">
+      <mat-error>
+        event name is required
+      </mat-error>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <div fxLayoutAlign="space-between">
+    <button (click)="onCancel()" color="warn" mat-button>CANCEL</button>
+    <button (click)="onSubmit()" [disabled]="dialogForm.invalid" color="primary" mat-button>OK</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

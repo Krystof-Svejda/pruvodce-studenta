@@ -1,0 +1,46 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Edit user information
+    </mat-card-title>
+    <mat-card-subtitle>{{ data.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content [formGroup]="dialogForm" fxLayout="column">
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" type="string" required>
+      <mat-error>
+        First name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName" type="string" required>
+      <mat-error>
+        Last name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="roleStudentOrTeacher" fxLayout="column">
+      <mat-radio-button value="1"
+                        labelPosition="before">
+        Student
+      </mat-radio-button>
+      <mat-radio-button value="2"
+                        labelPosition="before">
+        Teacher
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-checkbox formControlName="roleAdmin"
+                  labelPosition="before">
+      Administrator
+    </mat-checkbox>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+    <button mat-button color="primary" [disabled]="dialogForm.invalid" (click)="onSubmit()">OK</button>
+  </mat-card-actions>
+</mat-card>

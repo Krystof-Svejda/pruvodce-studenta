@@ -1,0 +1,21 @@
+<section fxLayout="column" fxFill>
+  <!-- Upper menu bar -->
+  <app-toolbar [title]="title" [isHandset]="isHandset" (sidebarToggle)="sidebarToggle()"></app-toolbar>
+
+  <!-- Sidenav container with left menu and content -->
+  <mat-sidenav-container fxFlex="1 0 auto" autosize>
+    <!-- Left hand side menu -->
+    <mat-sidenav #sidenav [opened]="(authenticationService.isLoggedIn) && !isHandset" [mode]="isHandset ? 'over' : 'side'">
+      <app-sidebar [version]="version"></app-sidebar>
+    </mat-sidenav>
+
+    <!-- Application content -->
+    <mat-sidenav-content>
+      <div class="app-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</section>
+

@@ -1,0 +1,45 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" fxFill>
+  <mat-card>
+    <mat-card-title fxLayoutAlign="center">Login</mat-card-title>
+    <mat-card-subtitle fxLayoutAlign="center">Log in to your account</mat-card-subtitle>
+
+    <form [formGroup]="loginForm">
+      <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field appearance="fill" >
+          <mat-label>Email</mat-label>
+          <input id="emailInput"
+                 matInput
+                 formControlName="email"
+                 autocomplete="email"
+                 type="email"
+                 required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+          <mat-label>Password</mat-label>
+          <input id="passwordInput"
+                 matInput
+                 formControlName="password"
+                 type="password"
+                 autocomplete="current-password"
+                 required>
+        </mat-form-field>
+
+        <div class="remember-me mat-small">
+          <mat-checkbox color="primary" formControlName="rememberMe">Remember my email address</mat-checkbox>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions class="login-actions" fxLayoutAlign="end">
+        <button type="button" mat-raised-button id="login" color="primary" [disabled]="loginForm.invalid" (click)="login()">LOGIN</button>
+      </mat-card-actions>
+
+      <mat-divider></mat-divider><br>
+
+      <div fxLayout="column" class="mat-small" fxLayoutAlign="start start">
+        <span class="login-alternative">Don't have an account? <a [routerLink]="['/auth/register']">Register</a></span>
+        <span class="login-alternative">Forgotten password? <a [routerLink]="['/auth/pwd-reset-request']">Forgotten password</a></span>
+      </div>
+    </form>
+  </mat-card>
+</div>

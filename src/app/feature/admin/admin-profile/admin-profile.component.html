@@ -1,0 +1,49 @@
+<div class="prdel" *ngIf="currentUser">
+  <mat-card>
+    <mat-card-content [formGroup]="dialogForm" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-around ">
+        <img src="https://i.ibb.co/DbXCLw6/unnamed.jpg" alt="unnamed" class="picture" fxFlex="55">
+        <div fxLayout="column"  fxFlex="25" fxFill>
+          <mat-form-field>
+            <mat-label>Jméno</mat-label>
+            <input matInput placeholder="Jméno" formControlName="firstName">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Příjmení</mat-label>
+            <input matInput placeholder="Příjmení" formControlName="lastName">
+          </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ currentUser.className }}</mat-label>
+        <input matInput placeholder="Třída" readonly>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ currentUser.email }}</mat-label>
+        <input matInput [placeholder]="currentUser.email" readonly>
+      </mat-form-field>
+
+      <mat-chip-list>
+        <mat-chip *ngIf="currentUser.roles.student">student</mat-chip>
+        <mat-chip *ngIf="currentUser.roles.teacher" color="primary" selected>teacher</mat-chip>
+        <mat-chip *ngIf="currentUser.roles.admin" color="accent" selected>admin</mat-chip>
+      </mat-chip-list>
+        </div>
+
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions fxLayoutAlign="end" >
+      <button mat-raised-button color="primary" [disabled]="dialogForm.invalid" (click)="onSubmit()">POTVRDIT</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+  <mat-card>
+      <a href="http://www.prirodniskola.cz/"><img src="https://i.ibb.co/LdmksqL/2532420-300x300.jpg" alt="2532420-300x300" border="0"  width="7%" height="7%"></a>
+      &nbsp;&nbsp;
+      <a href="https://prirodniskola.edookit.net/"><img src="https://i.ibb.co/1m8hh6S/edookit-logo-2.png" alt="edookit-logo-2" border="0" class="pictureedoo" width="7%" height="7%"></a>
+    <p>Případné errory, připomínky, či nápady pro zlepšení posílejte na Email: <a href="mailto:e.podminky@gmail.com"> e.podminky@gmail.com</a></p>
+  </mat-card>
+</div>
+

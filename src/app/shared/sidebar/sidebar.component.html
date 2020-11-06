@@ -1,0 +1,44 @@
+<mat-nav-list fxLayout="column" fxFill>
+
+<h1 class="side-nav-menu">Menu</h1>
+
+
+<div class="tlacitka">
+
+  <button mat-button *ngIf="currentUser && currentUser.roles.student"
+          [routerLink]="['/center']"
+          routerLinkActive="active">
+    <mat-icon mat-list-icon>dashboard</mat-icon>
+Přehled
+  </button>
+  <br>
+
+  <button mat-button *ngIf="currentUser && currentUser.roles.student"
+          [routerLink]="['/center/detail/']"
+          routerLinkActive="active">
+  <mat-icon mat-list-icon>fact_check</mat-icon>
+  Podmínky
+</button>
+  <br>
+
+  <button mat-button *ngIf="currentUser && ( currentUser.roles.teacher || currentUser.roles.admin )"
+          [routerLink]="['/admin']"
+          routerLinkActive="active">
+    <mat-icon mat-list-icon>settings</mat-icon>
+    Admin
+  </button>
+<br>
+  <button mat-button *ngIf="currentUser && currentUser.roles.admin"
+          [routerLink]="['/admin/users']"
+          routerLinkActive="active">
+    <mat-icon mat-list-icon>people</mat-icon>
+    Uživatelé
+  </button>
+</div>
+  <span fxFlex="1 0 auto"></span>
+  <div class="mat-body" fxLayout="row" fxLayoutAlign="center">
+    Version {{ version }}
+  </div>
+
+
+</mat-nav-list>
